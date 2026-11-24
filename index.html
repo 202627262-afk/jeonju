@@ -1,1 +1,736 @@
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>전주 한옥마을 | 한국의 아름다움을 걷다</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --brown: #65503c;
+  --dark: #30271f;
+  --cream: #f8f5ef;
+  --gold: #b69a6b;
+  --white: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--dark);
+  background: var(--cream);
+  line-height: 1.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(255,255,255,.94);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 8%;
+  box-shadow: 0 2px 15px #0000000a;
+}
+
+.logo {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--brown);
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.hero {
+  height: 760px;
+  min-height: 600px;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.48), rgba(0,0,0,.05)),
+    url('https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=2000&q=85')
+    center 55% / cover;
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+  color: white;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero-tag {
+  letter-spacing: 5px;
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 1.35;
+  margin-bottom: 25px;
+}
+
+.hero p {
+  font-size: 17px;
+  color: #f5eee4;
+  margin-bottom: 35px;
+}
+
+.main-btn {
+  display: inline-block;
+  padding: 13px 30px;
+  background: var(--gold);
+  color: white;
+  border-radius: 3px;
+  transition: .3s;
+}
+
+.main-btn:hover {
+  background: var(--brown);
+  transform: translateY(-3px);
+}
+
+section {
+  padding: 100px 9%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.section-title span {
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.section-title h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.section-title p {
+  color: #888;
+  font-size: 14px;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 65px;
+}
+
+.intro-img {
+  height: 480px;
+  border-radius: 3px;
+}
+
+.intro-text h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 34px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.intro-text p {
+  color: #777;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.info-line {
+  margin-top: 30px;
+  border-top: 1px solid #ddd4c7;
+  padding-top: 20px;
+  color: var(--brown);
+  font-size: 14px;
+}
+
+.places {
+  background: #f0ebe2;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: .35s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px #00000013;
+}
+
+.card img {
+  height: 245px;
+  transition: .4s;
+}
+
+.card:hover img {
+  transform: scale(1.04);
+}
+
+.card-content {
+  padding: 24px;
+}
+
+.card-content small {
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+.card-content h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 22px;
+  margin: 7px 0;
+}
+
+.card-content p {
+  font-size: 14px;
+  color: #888;
+}
+
+.food {
+  background: #fffdfa;
+}
+
+.food .card img {
+  height: 230px;
+}
+
+.food-label {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #f3eee5;
+  color: var(--brown);
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+.banner {
+  padding: 0;
+  height: 390px;
+  background:
+    linear-gradient(#0005,#0005),
+    url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1800&q=85')
+    center / cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.banner h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 38px;
+}
+
+.banner p {
+  margin-top: 15px;
+  letter-spacing: 2px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 12px;
+}
+
+.gallery-grid img {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.gallery-grid img:first-child {
+  grid-row: span 2;
+}
+
+.travel {
+  background: #f0ebe2;
+  text-align: center;
+}
+
+.travel-box {
+  max-width: 750px;
+  margin: auto;
+  background: white;
+  padding: 45px;
+  border-radius: 5px;
+}
+
+.travel-box h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.travel-box p {
+  color: #777;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+footer {
+  background: #30271f;
+  color: #ddd0bd;
+  text-align: center;
+  padding: 45px 20px;
+}
+
+footer h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+footer p {
+  font-size: 12px;
+  color: #a99b89;
+}
+
+@media(max-width:850px) {
+  header {
+    padding: 15px 5%;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 25px;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+  }
+
+  section {
+    padding: 75px 6%;
+  }
+
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .intro-img {
+    height: 350px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width:550px) {
+  .hero {
+    height: 650px;
+    padding: 0 7%;
+  }
+
+  .hero h1 {
+    font-size: 43px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 150px;
+  }
+
+  .gallery-grid img:first-child {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+
+  .banner h2 {
+    font-size: 28px;
+  }
+
+  .travel-box {
+    padding: 30px 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#" class="logo">전주, 한옥마을</a>
+
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="메뉴 열기">☰</button>
+
+  <nav id="nav">
+    <a href="#intro">한옥마을 소개</a>
+    <a href="#places">관광명소</a>
+    <a href="#food">전주 먹거리</a>
+    <a href="#gallery">사진 갤러리</a>
+    <a href="#travel">여행 안내</a>
+  </nav>
+</header>
+
+<!-- 메인 -->
+<main>
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">JEONJU HANOK VILLAGE</div>
+    <h1>시간이 머무는 곳,<br>전주 한옥마을</h1>
+    <p>
+      아름다운 기와지붕 아래 펼쳐지는 한국의 멋.<br>
+      천천히 걸으며 전주의 특별한 하루를 만나보세요.
+    </p>
+    <a href="#intro" class="main-btn">한옥마을 둘러보기 →</a>
+  </div>
+</div>
+
+<!-- 소개 -->
+<section id="intro">
+  <div class="intro">
+    <img class="intro-img"
+      src="https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?auto=format&fit=crop&w=1000&q=85"
+      alt="한국 전통 한옥 건축">
+
+    <div class="intro-text">
+      <div class="section-title" style="text-align:left;margin-bottom:20px">
+        <span>ABOUT JEONJU</span>
+      </div>
+
+      <h2>한국의 전통과<br>일상이 함께하는 마을</h2>
+
+      <p>
+        전주 한옥마을은 전주시 완산구 풍남동과 교동 일대에
+        자리한 전통문화 관광지입니다.
+      </p>
+
+      <p>
+        수많은 한옥이 모여 있는 골목길을 따라 걷다 보면
+        전통 건축의 아름다움과 한국의 멋을 느낄 수 있습니다.
+      </p>
+
+      <p>
+        한복 체험, 전통 공예, 한식과 다양한 문화 공간까지.
+        과거와 현재가 자연스럽게 어우러지는 곳입니다.
+      </p>
+
+      <div class="info-line">
+        LOCATION : 전북특별자치도 전주시 완산구 풍남동·교동 일대
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 관광명소 -->
+<section class="places" id="places">
+  <div class="section-title">
+    <span>PLACES TO VISIT</span>
+    <h2>전주에서 만나는 특별한 명소</h2>
+    <p>전주의 역사와 아름다움을 담은 여행 장소</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1584291527935-456e8e2dd734?auto=format&fit=crop&w=800&q=80"
+           alt="전통 궁궐 건축">
+      <div class="card-content">
+        <small>HISTORY</small>
+        <h3>경기전</h3>
+        <p>조선 태조 이성계의 어진을 모신 역사적인 공간.
+        고즈넉한 전각과 아름다운 대나무 숲을 만나보세요.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80"
+           alt="전통 건축물">
+      <div class="card-content">
+        <small>LANDMARK</small>
+        <h3>전동성당</h3>
+        <p>한옥의 기와지붕과 이국적인 성당 건축이
+        어우러지는 전주의 대표적인 명소입니다.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80"
+           alt="아름다운 전망">
+      <div class="card-content">
+        <small>SCENERY</small>
+        <h3>오목대</h3>
+        <p>한옥마을의 풍경을 내려다볼 수 있는 곳.
+        잠시 쉬어가며 아름다운 전주를 감상해 보세요.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80"
+           alt="전통 거리">
+      <div class="card-content">
+        <small>TRADITION</small>
+        <h3>전주향교</h3>
+        <p>전통 교육문화의 흔적을 만날 수 있는 공간.
+        고즈넉한 옛 건축의 매력을 느껴보세요.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=800&q=80"
+           alt="아름다운 다리">
+      <div class="card-content">
+        <small>PHOTO SPOT</small>
+        <h3>남천교 청연루</h3>
+        <p>전주천의 풍경과 전통 누각이 어우러지는
+        여유로운 산책 명소입니다.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=800&q=80"
+           alt="아름다운 야경">
+      <div class="card-content">
+        <small>NIGHT VIEW</small>
+        <h3>한옥마을 골목길</h3>
+        <p>전통 가옥 사이를 천천히 걸으며
+        전주만의 분위기를 느껴보세요.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- 감성 배너 -->
+<div class="banner">
+  <div>
+    <h2>느리게 걸을수록 아름다운 전주</h2>
+    <p>THE BEAUTY OF TRADITION</p>
+  </div>
+</div>
+
+<!-- 먹거리 -->
+<section class="food" id="food">
+  <div class="section-title">
+    <span>TASTE OF JEONJU</span>
+    <h2>놓칠 수 없는 전주의 맛</h2>
+    <p>눈으로 즐기고 입으로 기억하는 전주 여행</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80"
+           alt="한국식 비빔밥">
+      <div class="card-content">
+        <h3>전주비빔밥</h3>
+        <p>다양한 재료와 고소한 맛이 어우러지는
+        전주의 대표적인 음식입니다.</p>
+        <span class="food-label">전통 한식</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=800&q=80"
+           alt="따뜻한 국물 요리">
+      <div class="card-content">
+        <h3>콩나물국밥</h3>
+        <p>따뜻하고 시원한 국물에 아삭한 콩나물이
+        어우러지는 전주의 별미입니다.</p>
+        <span class="food-label">전주 대표 음식</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80"
+           alt="한국 전통 간식">
+      <div class="card-content">
+        <h3>전주 길거리 간식</h3>
+        <p>골목을 구경하며 다양한 간식과
+        먹거리를 즐기는 것도 여행의 즐거움입니다.</p>
+        <span class="food-label">골목 먹거리</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80"
+           alt="달콤한 디저트">
+      <div class="card-content">
+        <h3>전주 초코파이</h3>
+        <p>달콤한 디저트로 여행 중간에
+        즐거운 휴식을 가져보세요.</p>
+        <span class="food-label">디저트</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80"
+           alt="한국식 고기 요리">
+      <div class="card-content">
+        <h3>전주 떡갈비</h3>
+        <p>고소하고 풍부한 맛을 즐길 수 있는
+        전주의 인기 있는 한식 메뉴입니다.</p>
+        <span class="food-label">한식 별미</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
+           alt="감성적인 카페 음료">
+      <div class="card-content">
+        <h3>한옥마을 카페</h3>
+        <p>전통적인 공간에서 커피와 디저트를
+        즐기며 여유로운 시간을 보내보세요.</p>
+        <span class="food-label">카페 투어</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- 갤러리 -->
+<section id="gallery">
+  <div class="section-title">
+    <span>PHOTO GALLERY</span>
+    <h2>사진으로 만나는 전주</h2>
+    <p>전주의 아름다운 순간을 담아보세요.</p>
+  </div>
+
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?auto=format&fit=crop&w=1000&q=85" alt="한국 전통 건축">
+    <img src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=700&q=85" alt="전통 마을 풍경">
+    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=700&q=85" alt="건축 풍경">
+    <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=700&q=85" alt="건물 풍경">
+    <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=700&q=85" alt="저녁 풍경">
+  </div>
+</section>
+
+<!-- 여행 안내 -->
+<section class="travel" id="travel">
+  <div class="section-title">
+    <span>TRAVEL INFORMATION</span>
+    <h2>전주 여행 안내</h2>
+    <p>여행을 떠나기 전 확인해 보세요.</p>
+  </div>
+
+  <div class="travel-box">
+    <h3>전주 한옥마을</h3>
+    <p>📍 전북특별자치도 전주시 완산구 풍남동·교동 일대</p>
+    <p>☎ 관광안내소 : 063-282-1330</p>
+    <p>🏠 공식 홈페이지 : hanok.jeonju.go.kr</p>
+    <br>
+    <a class="main-btn"
+       href="https://www.google.com/maps/search/?api=1&query=전주한옥마을"
+       target="_blank" rel="noopener">
+       지도에서 위치 확인하기 →
+    </a>
+    <br><br>
+    <a href="https://hanok.jeonju.go.kr/tour/info"
+       target="_blank" rel="noopener"
+       style="color:#947b54;font-size:14px;text-decoration:underline">
+       공식 관광 정보 확인하기
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <h3>전주, 한옥마을</h3>
+  <p>한국의 아름다움을 걷다.</p>
+  <br>
+  <p>JEONJU HANOK VILLAGE</p>
+  <p>본 웹사이트는 전주 관광 소개를 위한 제작 예시입니다.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('nav').classList.toggle('active');
+}
+
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('nav').classList.remove('active');
+  });
+});
+</script>
+
+</body>
+</html>
+
